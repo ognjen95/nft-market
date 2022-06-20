@@ -9,7 +9,7 @@ import {
 
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
 import Market from '../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
-import { NFTType } from './types/nft.types'
+import { NFTType } from '../types/nft.types'
 import { NFTCard } from '../components'
 
 let rpcEndpoint: undefined | string | ConnectionType;

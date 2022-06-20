@@ -9,7 +9,7 @@ import {
 
 import Market from '../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
-import { NFTType } from './types/nft.types'
+import { NFTType } from '../types/nft.types'
 import { NFTCard } from '../components'
 
 export default function MyAssets() {
