@@ -22,11 +22,7 @@ const Home = () => {
   const [nfts, setNfts] = useState<NFTType[]>([])
   const [loadingState, setLoadingState] = useState(true)
 
-  useEffect(() => {
-    loadNFTs()
-  }, [])
-
-  async function loadNFTs() {
+  const loadNFTs = async () => {
     const provider = new ethers.providers.JsonRpcProvider(rpcEndpoint)
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
@@ -54,7 +50,8 @@ const Home = () => {
       setLoadingState(false)
     }
   }
-  async function buyNft(nft: NFTType) {
+  
+  const buyNft = async (nft: NFTType) => {
     const web3Modal = new Web3Modal()
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)
@@ -68,6 +65,10 @@ const Home = () => {
     await transaction.wait()
     loadNFTs()
   }
+
+  useEffect(() => {
+    loadNFTs()
+  }, [])
 
   if (loadingState && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
 

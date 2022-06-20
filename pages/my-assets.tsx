@@ -16,11 +16,7 @@ const MyAssets = () => {
   const [nfts, setNfts] = useState<NFTType[]>([])
   const [loadingState, setLoadingState] = useState(true)
 
-  useEffect(() => {
-    loadNFTs()
-  }, [])
-
-  async function loadNFTs() {
+  const loadNFTs = async ()=> {
     const web3Modal = new Web3Modal()
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)
@@ -43,11 +39,17 @@ const MyAssets = () => {
       }
       return item
     }))
+    
     if (items.length) {
       setNfts(items)
       setLoadingState(false)
     }
   }
+  
+  useEffect(() => {
+    loadNFTs()
+  }, [])
+
   if (loadingState && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets owned</h1>)
   return (
     <div className="flex justify-center">
