@@ -44,9 +44,12 @@ const CreatorDashboard = () => {
     }))
     /* create a filtered array of items that have been sold */
     const soldItems = items.filter(i => i.sold)
-    setSold(soldItems)
-    setNfts(items)
-    setLoadingState(false)
+
+    if (soldItems.length || items.length) {
+      setSold(soldItems)
+      setNfts(items)
+      setLoadingState(false)
+    }
   }
 
   useEffect(() => {

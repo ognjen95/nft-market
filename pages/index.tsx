@@ -20,7 +20,7 @@ if (process.env.NEXT_PUBLIC_WORKSPACE_URL) {
 
 const Home = () => {
   const [nfts, setNfts] = useState<NFTType[]>([])
-  const [loadingState, setLoadingState] = useState('not-loaded')
+  const [loadingState, setLoadingState] = useState(true)
 
   useEffect(() => {
     loadNFTs()
@@ -48,9 +48,11 @@ const Home = () => {
       }
       return item
     }))
-    
-    setNfts(items)
-    setLoadingState('loaded')
+
+    if (items.length) {
+      setNfts(items)
+      setLoadingState(false)
+    }
   }
   async function buyNft(nft: NFTType) {
     const web3Modal = new Web3Modal()
@@ -67,7 +69,7 @@ const Home = () => {
     loadNFTs()
   }
 
-  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
+  if (loadingState && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
 
   return (
     <div className="flex justify-center">

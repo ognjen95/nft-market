@@ -43,9 +43,10 @@ const MyAssets = () => {
       }
       return item
     }))
-
-    setNfts(items)
-    setLoadingState(false)
+    if (items.length) {
+      setNfts(items)
+      setLoadingState(false)
+    }
   }
   if (loadingState && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets owned</h1>)
   return (
