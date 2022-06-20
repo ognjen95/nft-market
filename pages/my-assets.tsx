@@ -12,7 +12,7 @@ import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
 import { NFTType } from '../types/nft.types'
 import { NFTCard } from '../components'
 
-export default function MyAssets() {
+const MyAssets = () => {
   const [nfts, setNfts] = useState<NFTType[]>([])
   const [loadingState, setLoadingState] = useState(true)
 
@@ -67,3 +67,5 @@ export default function MyAssets() {
     </div>
   )
 }
+
+export default MyAssets;

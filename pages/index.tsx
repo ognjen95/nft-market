@@ -18,7 +18,7 @@ if (process.env.NEXT_PUBLIC_WORKSPACE_URL) {
   rpcEndpoint = process.env.NEXT_PUBLIC_WORKSPACE_URL
 }
 
-export default function Home() {
+const Home = () => {
   const [nfts, setNfts] = useState<NFTType[]>([])
   const [loadingState, setLoadingState] = useState('not-loaded')
 
@@ -94,3 +94,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home;

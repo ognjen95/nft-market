@@ -12,7 +12,7 @@ import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
 import { NFTType } from '../types/nft.types'
 import { NFTCard } from '../components'
 
-export default function CreatorDashboard() {
+const CreatorDashboard = () => {
   const [nfts, setNfts] = useState<NFTType[]>([])
   const [sold, setSold] = useState<NFTType[]>([])
 
@@ -98,3 +98,5 @@ export default function CreatorDashboard() {
     </div>
   )
 }
+
+export default CreatorDashboard;
