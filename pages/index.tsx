@@ -32,7 +32,7 @@ const Home = () => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId)
       const meta = await axios.get(tokenUri)
       let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
-      console.log(i.itemId)
+
       let item = {
         price,
         itemId: i.itemId.toNumber(),
@@ -50,7 +50,7 @@ const Home = () => {
       setLoadingState(false)
     }
   }
-  
+
   const buyNft = async (nft: NFTType) => {
     const web3Modal = new Web3Modal()
     const connection = await web3Modal.connect()
